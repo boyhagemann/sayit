@@ -27,6 +27,22 @@ Route::resource('api/article', 'Api\ArticleController');
 
 
 
+Route::get('scan', function() {
+
+	$files = File::glob('../*.md');
+
+	foreach($files as $file) {
+		$data = array(
+			'title' => basename($file),
+			'markdown' => file_get_contents($file),
+			'key' => md5($file),
+		);
+
+		API::post('http://localhost/sayit/public/article', $data);
+	}
+
+});
+
 
 
 
