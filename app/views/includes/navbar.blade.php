@@ -23,7 +23,7 @@
         <div class="form-group">
           <input type="text" name="q" class="form-control" placeholder="Search" value="{{{ Input::get('q') }}}">
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">

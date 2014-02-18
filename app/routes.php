@@ -36,6 +36,9 @@ Route::get('scan', function() {
 			'title' => basename($file),
 			'markdown' => file_get_contents($file),
 			'key' => md5($file),
+            'metadata' => array(
+                'location' => $file,
+            )
 		);
 	}
     		
