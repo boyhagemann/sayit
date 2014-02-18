@@ -63,6 +63,10 @@ class ArticleRepository
 
 							// Global search terms
 							default:
+                                $q->where(function($q) use($part) {
+                                    $q->where('title', 'LIKE', "%$part%")
+                                      ->orWhere('markdown', 'LIKE', "%$part%");
+                                });
 
 						}
 
