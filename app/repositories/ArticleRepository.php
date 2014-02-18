@@ -30,6 +30,7 @@ class ArticleRepository
 					}
 					break;
 
+				case 'q':
 				case 'search':
 					$parts = explode(' ', $value);
 

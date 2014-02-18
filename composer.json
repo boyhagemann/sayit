@@ -11,7 +11,7 @@
 		"rtablada/package-installer": "dev-master",
 		"lucadegasperi/oauth2-server-laravel": "1.x",
 		"teepluss/api": "dev-master",
-		"vtalbot/markdown": "1.*"
+        "michelf/php-markdown": "1.4.*@dev"
 	},
 	"autoload": {
 		"classmap": [

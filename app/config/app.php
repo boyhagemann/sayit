@@ -112,7 +112,6 @@ return array(
 		'Rtablada\PackageInstaller\PackageInstallerServiceProvider',
 		'LucaDegasperi\OAuth2Server\OAuth2ServerServiceProvider',
 		'Teepluss\Api\ApiServiceProvider',
-		'VTalbot\Markdown\MarkdownServiceProvider',
 
 	),
 
@@ -183,7 +182,6 @@ return array(
 		'AuthorizationServer' => 'LucaDegasperi\OAuth2Server\Facades\AuthorizationServerFacade',
 		'ResourceServer' => 'LucaDegasperi\OAuth2Server\Facades\ResourceServerFacade',
 		'API' => 'Teepluss\Api\Facades\API',
-		'Markdown' => 'VTalbot\Markdown\Facades\Markdown',
 
 	),
 

@@ -11,7 +11,7 @@ class ArticleController extends BaseController {
 	 */
 	public function index()
 	{
-		$articles = Article::with(array('channel', 'user'))->get();
+		$articles = ArticleRepository::buildQueryFromInput()->with(array('channel', 'user'))->get();
         return View::make('article.index', compact('articles'));
 	}
 

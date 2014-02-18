@@ -29,21 +29,31 @@ Route::resource('api/article', 'Api\ArticleController');
 
 Route::get('scan', function() {
 
-	$files = File::glob('../*.md');
+	$files = scanForMd('../');
 
 	foreach($files as $file) {
-		$data = array(
+		$batch[] = array(
 			'title' => basename($file),
 			'markdown' => file_get_contents($file),
 			'key' => md5($file),
 		);
-
-		API::post('http://localhost/sayit/public/article', $data);
 	}
-
+    		
+    $response = API::post('http://localhost/sayit/public/api/article', compact('batch'));
+    
+    dd($response);
 });
 
-
+function scanForMd($folder)
+{
+    $files = File::glob(rtrim($folder, '/') . '/*.md');
+    
+    foreach(File::directories($folder) as $subfolder) {
+        $files = array_merge($files, scanForMd($subfolder));
+    }
+    
+    return $files;
+}
 
 
 

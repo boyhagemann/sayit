@@ -13,7 +13,7 @@ class ArticleController extends BaseController {
 	 */
 	public function index()
 	{
-		$articles = ArticleRepository::buildQueryFromInput()->get()->toArray();
+		$articles = ArticleRepository::buildQueryFromInput()->get()->toArray();                
         return Response::json(compact('articles'));
 	}
 
@@ -24,6 +24,22 @@ class ArticleController extends BaseController {
 	 */
 	public function store()
 	{
+        if(Input::get('batch')) {
+            
+            foreach(Input::get('batch') as $data) {
+                
+                Input::replace($data);
+                $responses[] = $this->store()->getData();
+            }
+            
+            return Response::json(array(
+                'message' => 'Articles stored',
+                'result' => $responses,
+            ));
+            
+        }
+        
+        
 		$v = Validator::make(Input::all(), Article::$rules);
 
 		if($v->fails()) {
