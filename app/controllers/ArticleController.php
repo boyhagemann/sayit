@@ -3,18 +3,8 @@
 use Boyhagemann\Form\FormBuilder;
 
 class ArticleController extends BaseController {
-
-	protected $fb;
-
-	/**
-	 * @param FormBuilder $fb
-	 */
-	public function __construct(FormBuilder $fb)
-	{
-		$this->fb = $fb;
-	}
-
-	/**
+     
+     /**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
@@ -32,7 +22,7 @@ class ArticleController extends BaseController {
 	 */
 	public function create()
 	{
-		$fb = $this->fb;
+		$fb = App::make('formbuilder');
 		$fb->text('title')->label('Title')->required();
 		$fb->text('key')->label('Key');
 		$fb->textarea('markdown')->label('Body')->required();
@@ -86,7 +76,7 @@ class ArticleController extends BaseController {
 	 */
 	public function edit(Article $article)
 	{
-		$fb = $this->fb;
+		$fb = App::make('formbuilder');
 		$fb->text('title')->label('Title')->required();
 		$fb->textarea('markdown')->label('Body')->required();
 		$fb->model($article);
