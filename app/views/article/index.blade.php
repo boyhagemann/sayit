@@ -3,7 +3,7 @@
 @section('top')
 
 <div class="page-header clearfix">
-	<h1 class="pull-left">Articles</h1>
+	<h1 class="pull-left">{{{ $title }}}</h1>
 	<div class="btn-group col-lg-3 pull-right">
 		<a href="" class="btn btn-success btn-lg"><i class="glyphicon glyphicon-pencil"></i>Add new article</a>
 	</div>
@@ -20,7 +20,7 @@
 @foreach($articles as $article)
 <li class="media">
 	<a class="pull-left" href="#">
-
+		<img src="http://placehold.it/65x65" width="65" height="65" alt="{{{ $article['user']['username'] }}}">
 	</a>
 	<div class="media-body">
 		<h4 class="media-heading">

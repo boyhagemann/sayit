@@ -27,8 +27,18 @@
                 @yield('sidebar')
             </div>
 
-
         </div>
+
+		<div class="jumbotron jumbotron-bottom"">
+
+			<div class="container>
+
+				<div class="col-lg-12 section-bottom">
+					@yield('bottom')
+				</div>
+
+			</div>
+		</div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js" type="text/javascript"></script>
