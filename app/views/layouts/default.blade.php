@@ -31,12 +31,8 @@
 
 		<div class="jumbotron jumbotron-bottom"">
 
-			<div class="container>
-
-				<div class="col-lg-12 section-bottom">
-					@yield('bottom')
-				</div>
-
+			<div class="container">
+				@yield('bottom')
 			</div>
 		</div>
 

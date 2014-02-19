@@ -12,12 +12,7 @@ class ArticleController extends BaseController {
 	public function index()
 	{
 		$articles = ArticleRepository::buildQueryFromInput()->with(array('channel', 'user'))->get();
-
-		$title = Input::get('q')
-			? sprintf('Search results for "%s"', Input::get('q'))
-			: 'Articles';
-
-        return View::make('article.index', compact('articles', 'title'));
+        return View::make('article.index', compact('articles'));
 	}
 
 	/**

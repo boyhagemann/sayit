@@ -3,7 +3,13 @@
 @section('top')
 
 <div class="page-header clearfix">
-	<h1 class="pull-left">{{{ $title }}}</h1>
+	<h1 class="pull-left">
+		@if(Input::get('q'))
+		Search results for <em class="text-muted">{{{ Input::get('q') }}}</em>
+		@else
+		Articles
+		@endif
+	</h1>
 	<div class="btn-group col-lg-3 pull-right">
 		<a href="" class="btn btn-success btn-lg"><i class="glyphicon glyphicon-pencil"></i>Add new article</a>
 	</div>

@@ -1,15 +1,58 @@
 
 body {
     padding-top: 70px;
+	background-color: #f9f9f9;
+	/*background-image: url('../images/img-noise-361x370.png');*/
+}
+body p {
+	color: #444;
+}
+.section-top .page-header {
+	border-bottom: none;
 }
 
-.section-sidebar {
-	/*padding-top: 34px;*/
+
+
+.section-content {
+	background: #fff;
+	margin-bottom: 100px;
 }
+.section-content pre {
+	border: none;
+}
+
+
+
+.section-sidebar  {
+	margin-bottom: 100px;
+}
+.section-sidebar h5.text-muted {
+	margin-top: 50px;
+}
+.section-sidebar h5.text-muted:first-child {
+	margin-top: 0;
+}
+
+
 
 .jumbotron-bottom {
-	margin-top: 100px;
 	background: #2d2d2d;
 	min-height: 300px;
 	margin-bottom: 0;
+}
+
+.jumbotron-bottom p {
+	font-size: 1em;
+	color: #fff;
+}
+.jumbotron-bottom code {
+	background-color: #444;
+}
+.jumbotron-bottom dl dt,
+.jumbotron-bottom h4,
+.jumbotron-bottom h5 {
+	color: #666;
+}
+.jumbotron-bottom dl dd {
+	color: #fff;
 }
