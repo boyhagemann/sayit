@@ -23,6 +23,14 @@ body p {
 
 
 
+.section-content .textarea-markdown {
+	min-height: 400px;
+}
+.section-content .textarea-markdown textarea {
+	height: 100%;
+}
+
+
 .section-sidebar  {
 	margin-bottom: 100px;
 }

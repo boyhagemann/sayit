@@ -5,7 +5,7 @@
 <div class="page-header clearfix">
 	<h1 class="pull-left">{{{ $article['title'] }}}</h1>
 	<div class="col-lg-3 pull-right">
-		<a href="" class="btn btn-success btn-lg"><i class="glyphicon glyphicon-edit"></i> Edit this article</a>
+		<a href="{{ URL::route('article.edit', $article->slug) }}" class="btn btn-success btn-lg"><i class="glyphicon glyphicon-edit"></i> Edit this article</a>
 	</div>
 </div>
 
