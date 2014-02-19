@@ -41,7 +41,7 @@ Route::get('scan', function() {
             )
 		);
 	}
-    		
+
     $response = API::post('http://localhost/sayit/public/api/article', compact('batch'));
     
     dd($response);

@@ -89,6 +89,38 @@ class ArticleRepository
 	}
 
 	/**
+	 * @param  string $markdown
+	 * @return string|null
+	 */
+	public static function generateTeaser($markdown)
+	{
+		$lines = explode(PHP_EOL, $markdown);
+		foreach($lines as $text) {
+
+			if(in_array(substr($text, 0, 1), array('#', '>', '[', '(', '-'))) {
+				continue;
+			}
+
+			return static::getTeaser($text);
+		}
+
+		return static::getTeaser(current($lines));
+	}
+
+	/**
+	 * @param     $string
+	 * @param int $trimLength
+	 * @return string
+	 */
+	protected static function getTeaser($string, $trimLength = 40) {
+
+		$string =  trim(preg_replace('/[^a-zA-Z0-9\s]/i', '', $string));
+		$string = substr($string, 0, 200);
+
+		return $string;
+	}
+
+	/**
 	 * @param $id
 	 * @return Article
 	 */

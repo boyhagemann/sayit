@@ -15,11 +15,15 @@
         
         <div class="container">
 
-            <div class="col-lg-9">
+			<div class="col-lg-12 section-top">
+				@yield('top')
+			</div>
+
+            <div class="col-lg-9 section-content">
                 @yield('content')
             </div>
             
-            <div class="col-lg-3">
+            <div class="col-lg-3 section-sidebar">
                 @yield('sidebar')
             </div>
 

@@ -38,31 +38,39 @@ class ArticleController extends BaseController {
             ));
             
         }
-        
-        
-		$v = Validator::make(Input::all(), Article::$rules);
 
-		if($v->fails()) {
+
+		try {
+			$v = Validator::make(Input::all(), Article::$rules);
+
+			if($v->fails()) {
+				return Response::json(array(
+					'message' => 'Input contains errors',
+					'errors' => $v->messages(),
+				));
+			}
+
+			// First try to find an existing article with the same key. If an article is found,
+			// then we can update this article.
+			if(Input::get('key') && ($article = ArticleRepository::findByKey(Input::get('key')))) {
+				return $this->update($article);
+			}
+
+
+			// This is a new article. Save it with the validated input data
+			$article = Article::create(Input::all());
+
 			return Response::json(array(
-				'message' => 'Input contains errors',
-				'errors' => $v->messages(),
+				'message' => 'Article stored',
+				'article' => $article->toArray(),
 			));
+
 		}
-
-		// First try to find an existing article with the same key. If an article is found,
-		// then we can update this article.
-		if(Input::get('key') && ($article = ArticleRepository::findByKey(Input::get('key')))) {
-			return $this->update($article);
+		catch(\Exception $e) {
+			return Response::json(array(
+				'message' => $e->getMessage())
+			);
 		}
-
-
-		// This is a new article. Save it with the validated input data
-		$article = Article::create(Input::all());
-
-		return Response::json(array(
-			'message' => 'Article stored',
-			'article' => $article->toArray(),
-		));
 	}
 
 	/**

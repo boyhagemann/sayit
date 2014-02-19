@@ -1,11 +1,41 @@
 @extends('layouts.default')
 
+@section('top')
+
+<div class="page-header clearfix">
+	<h1 class="pull-left">Articles</h1>
+	<div class="btn-group col-lg-3 pull-right">
+		<a href="" class="btn btn-success btn-lg"><i class="glyphicon glyphicon-pencil"></i>Add new article</a>
+	</div>
+</div>
+
+@stop
+
 @section('content')
 
+<ul class="media-list">
+
+</ul>
+
 @foreach($articles as $article)
-<div class="">
-	{{{ $article['user']['email'] }}}: <a href="{{ URL::route('article.show', $article['slug']) }}">{{{ $article['title'] }}}</a>
-</div>
+<li class="media">
+	<a class="pull-left" href="#">
+
+	</a>
+	<div class="media-body">
+		<h4 class="media-heading">
+			<a href="{{ URL::route('article.show', $article['slug']) }}">{{{ $article['title'] }}}</a>
+		</h4>
+		<div class="text-muted">By {{{ $article['user']['email'] }}}</div>
+		@if($article['teaser'])
+		<p>{{{ $article['teaser'] }}}</p>
+		@endif
+	</div>
+</li>
 @endforeach
+
+@stop
+
+@section('sidebar')
 
 @stop
