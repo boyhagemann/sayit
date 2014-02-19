@@ -75,3 +75,13 @@ Delete an existing article.
 DELETE `/api/article/{article}` 
 
 > {article} can be the article ID or the slug.
+
+# TODO
+
+- [ ] tags
+- [ ] [text analysis] (https://github.com/yooper/php-text-analysis) for autogenerating tags
+- [ ] user system
+- [ ] public/private articles
+- [ ] oAuth2 for API
+- [ ] user can follow user, channel or tags
+- [ ] notifications
