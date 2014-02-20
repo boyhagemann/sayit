@@ -19,6 +19,10 @@
 				@yield('top')
 			</div>
 
+		</div>
+
+		<div class="container-fluid">
+
             <div class="col-lg-6 section-content">
                 @yield('content')
             </div>
@@ -38,12 +42,26 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js" type="text/javascript"></script>
-        {{ HTML::script('js/js-markdown-extra.js') }}
-        {{ HTML::script('js/js-markdown-extra-master/js/jquery.meltdown.js') }}
+		<script type="text/javascript">
 
-	<script type="text/javascript">
-		$('.textarea-markdown textarea').meltdown();
-	</script>
+				var element = $('.textarea-markdown');
+				var textarea = element.find('textarea');
+
+				textarea.keyup(function() {
+
+					var data = {
+						markdown: $(this).val()
+					}
+
+					$.post(element.data('url'), data, function(response) {
+						$('#markdown-preview').html(response);
+					});
+
+				});
+
+				textarea.keyup();
+
+		</script>
 
     </body>
 </html>

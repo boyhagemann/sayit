@@ -11,6 +11,7 @@
 |
 */
 
+use Michelf\MarkdownExtra;
 
 Route::bind('article', function($slug) {
 
@@ -24,7 +25,9 @@ Route::resource('channel', 'ChannelController');
 Route::resource('api/article', 'Api\ArticleController');
 
 
-
+Route::post('article/preview', array('as' => 'article.preview', function() {
+	return MarkdownExtra::defaultTransform(Input::get('markdown'));
+}));
 
 
 Route::get('scan', function() {
