@@ -3,7 +3,7 @@
 
 @section('top')
 
-{{ Form::model($article) }}
+{{ Form::model($article, array('route' => array('article.update', $article->id), 'method' => 'put')) }}
 
 <div class="page-header clearfix">
 	<div class="form-group">
@@ -14,7 +14,7 @@
 @stop
 
 @section('content')
-<div class="form-group textarea-markdown" data-url="{{ URL::route('article.preview') }}">
+<div id="markdown-editor" class="form-group textarea-markdown" data-url="{{ URL::route('article.preview') }}">
 	{{ Form::textarea('markdown', null, array('class' => 'form-control col-lg-12', 'rows' => 20)) }}
 </div>
 

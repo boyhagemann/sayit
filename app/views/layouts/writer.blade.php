@@ -44,22 +44,31 @@
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js" type="text/javascript"></script>
 		<script type="text/javascript">
 
-				var element = $('.textarea-markdown');
-				var textarea = element.find('textarea');
+				var editor = $('#markdown-editor');
+				var textarea = editor.find('textarea');
 
 				textarea.keyup(function() {
 
-					var data = {
-						markdown: $(this).val()
-					}
-
-					$.post(element.data('url'), data, function(response) {
+					$.post(editor.data('url'), { markdown: $(this).val() }, function(response) {
 						$('#markdown-preview').html(response);
 					});
 
 				});
 
 				textarea.keyup();
+
+
+				textarea.scroll(function(e) {
+
+					var offsetY = $(this).scrollTop();
+					var height = $(this).prop("scrollHeight")
+					var diff = offsetY/height;
+
+					var previewHeight = $('#markdown-preview').prop("scrollHeight");
+					var y = previewHeight * diff;
+					$('#markdown-preview').scrollTop(y);
+
+				});
 
 		</script>
 

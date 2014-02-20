@@ -11,7 +11,7 @@
 		@endif
 	</h1>
 	<div class="btn-group col-lg-3 pull-right">
-		<a href="" class="btn btn-success btn-lg"><i class="glyphicon glyphicon-pencil"></i>Add new article</a>
+		<a href="{{ URL::route('article.create') }}" class="btn btn-success btn-lg"><i class="glyphicon glyphicon-pencil"></i>Add new article</a>
 	</div>
 </div>
 
