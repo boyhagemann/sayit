@@ -112,6 +112,7 @@ return array(
 		'Rtablada\PackageInstaller\PackageInstallerServiceProvider',
 		'LucaDegasperi\OAuth2Server\OAuth2ServerServiceProvider',
 		'Teepluss\Api\ApiServiceProvider',
+		'Cartalyst\Sentry\SentryServiceProvider',
 
 	),
 
@@ -182,7 +183,7 @@ return array(
 		'AuthorizationServer' => 'LucaDegasperi\OAuth2Server\Facades\AuthorizationServerFacade',
 		'ResourceServer' => 'LucaDegasperi\OAuth2Server\Facades\ResourceServerFacade',
 		'API' => 'Teepluss\Api\Facades\API',
-
+		'Sentry' => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
 	),
 
 );

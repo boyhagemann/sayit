@@ -16,6 +16,7 @@
         <div class="container">
 
 			<div class="col-lg-12 section-top">
+				@include('includes.messages')
 				@yield('top')
 			</div>
 

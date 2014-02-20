@@ -24,6 +24,7 @@ class CreateArticleTable extends Migration {
 			$table->text('html');
 			$table->string('key')->nullable();
 			$table->text('metadata')->nullable();
+			$table->string('access');
 
 			$table->index('user_id');
 			$table->index('channel_id');

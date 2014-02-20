@@ -4,13 +4,14 @@ class Article extends Eloquent
 {
 	protected $table = 'article';
 
-	protected $fillable = array('title', 'user_id', 'channel_id', 'teaser', 'key', 'markdown', 'html', 'metadata');
+	protected $fillable = array('title', 'user_id', 'channel_id', 'teaser', 'key', 'markdown', 'html', 'metadata', 'access');
 
 	protected $guarded = array('id');
 
 	public static $rules = array(
-		'title' => 'required',
-		'markdown' => 'required',
+		'title' 	=> 'required',
+		'markdown' 	=> 'required',
+		'access' 	=> 'in:public,private',
 	);
 
 	public static $sluggable = array(
@@ -28,6 +29,22 @@ class Article extends Eloquent
     {
         $this->attributes['metadata'] = json_encode($value);
     }
+
+	/**
+	 * @return bool
+	 */
+	public function isPrivate()
+	{
+		return $this->access == 'private';
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function isPublic()
+	{
+		return $this->access == 'public';
+	}
     
 	/**
 	 * @return Channel

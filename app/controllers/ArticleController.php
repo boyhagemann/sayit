@@ -11,7 +11,8 @@ class ArticleController extends BaseController {
 	 */
 	public function index()
 	{
-		$articles = ArticleRepository::buildQueryFromInput()->with(array('channel', 'user'))->get();
+		$articles = ArticleRepository::allWithAccess();
+
         return View::make('article.index', compact('articles'));
 	}
 
@@ -65,6 +66,14 @@ class ArticleController extends BaseController {
 	 */
 	public function show(Article $article)
 	{
+		if($article->isPrivate() && !Sentry::check()) {
+			return View::make('article.not-authorized', compact('article'));
+		}
+
+		if($article->isPrivate() && !ArticleRepository::isGrantedForUser($article)) {
+			return View::make('article.not-allowed', compact('article'));
+		}
+
 		return View::make('article.show', compact('article'));
 	}
 

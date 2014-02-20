@@ -14,7 +14,6 @@ body p {
 
 
 .section-content {
-	background: #fff;
 	margin-bottom: 100px;
 }
 .section-content pre {
@@ -60,6 +59,17 @@ body p {
 }
 
 
+.input-article-title {
+	font-size: 2em;
+	font-size: 36px; /* Just like the TW h1 */
+	color: #333;
+	padding: 0;
+	margin-left: -1px;
+	height: 78px;
+	border: none;
+	background: none;
+	box-shadow: none;
+}
 
 #markdown-editor {
 	height: 500px;
@@ -71,4 +81,49 @@ body p {
 
 #markdown-editor textarea {
 	height: 100%;
+	color: #222;
+	font-family: monospace;
+	border: none;
+	padding: 20px 5px 20px 20px;
+}
+
+ul.editor-nav li a {
+	display: block;
+	width: 100%;
+	/*background: #eee;*/
+	padding: 10px;
+	color: #ccc;
+}
+
+
+.blank-holder {
+	background-color: #fff;
+	padding: 15px;
+}
+
+.article-list__item {
+	position: relative;
+}
+.article-list__channel {
+	position: absolute;
+	right: 5px;
+	top: 5px;
+}
+
+.article-list__title {
+	margin-bottom: 0;
+}
+.article-list__meta {
+	font-size: 0.8em;
+	margin-bottom: 10px;
+}
+.article-list__user-link {
+	color: #333;
+}
+.article-list__channel-link {
+	color: #333;
+}
+.article-list__locked {
+	color: #cd3f3f;
+	color: black;
 }

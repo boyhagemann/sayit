@@ -4,13 +4,6 @@
 
 <div class="page-header clearfix">
 	<h1 class="pull-left">{{{ $article['title'] }}}</h1>
-	<div class="col-lg-3 pull-right">
-		@if(Sentry::check())
-		<a href="{{ URL::route('article.edit', $article->slug) }}" class="btn btn-success btn-lg"><i class="glyphicon glyphicon-edit"></i> Edit this article</a>
-		@else
-		<a href="{{ URL::route('article.edit', $article->slug) }}" class="btn btn-success btn-lg"><i class="glyphicon glyphicon-lock"></i> Login to edit</a>
-		@endif
-	</div>
 </div>
 
 @stop
@@ -18,7 +11,11 @@
 @section('content')
 
 <div class="blank-holder">
-	{{ $article['html'] }}
+	<h2>Oops... you are not logged in</h2>
+	<p>
+		It seems you need to be logged in to view this article.
+	</p>
+	<a href="" class="btn btn-success btn-lg"><i class="glyphicon glyphicon-lock"></i> Login</a>
 </div>
 
 @stop

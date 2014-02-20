@@ -11,6 +11,10 @@ Article::creating(function(Article $article) {
 	$article->user_id 	= $user->id;
 	$article->html 		= Input::get('html') ? Input::get('html') : MarkdownExtra::defaultTransform($article->markdown);
 
+	if(!$article->access) {
+		$article->access = 'public';
+	}
+
 	if(!$article->teaser) {
 		$article->teaser = ArticleRepository::generateTeaser($article->markdown);
 	}

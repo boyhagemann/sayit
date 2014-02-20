@@ -14,6 +14,7 @@ class ArticleTableSeeder extends Seeder {
 			'markdown' => '## test header',
 			'user_id' => 1,
 			'channel_id' => 1,
+			'access' => 'public',
 		));
 	}
 

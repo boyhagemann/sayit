@@ -29,8 +29,14 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">You <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Login</a></li>
-            <li><a href="#">Join</a></li>
+			@if(Sentry::check())
+            <li><a href="{{ URL::route('user.dashboard') }}">Dashboard</a></li>
+            <li><a href="{{ URL::route('user.edit') }}">Profile</a></li>
+            <li><a href="{{ URL::route('auth.logout') }}">Logout</a></li>
+			@else
+			  <li><a href="{{ URL::route('user.register') }}">Register</a></li>
+			  <li><a href="{{ URL::route('auth.login') }}">Login</a></li>
+			@endif
             <li class="divider"></li>
             <li><a href="#">Help</a></li>
           </ul>

@@ -25,6 +25,49 @@ Route::resource('channel', 'ChannelController');
 Route::resource('api/article', 'Api\ArticleController');
 
 
+Route::get('/', array(
+	'as' => 'home',
+	'uses' => 'homeController@index',
+));
+Route::get('login', array(
+	'as' => 'auth.login',
+	'uses' => 'authController@login',
+));
+Route::post('login', array(
+	'as' => 'auth.check',
+	'uses' => 'authController@check',
+));
+Route::get('logout', array(
+	'as' => 'auth.logout',
+	'uses' => 'authController@logout',
+));
+Route::get('user/unconfirmed', array(
+	'as' => 'user.unconfirmed',
+	'uses' => 'UserController@unconfirmed',
+));
+Route::get('user/confirm/{email}/{token}', array(
+	'as' => 'user.confirm',
+	'uses' => 'UserController@confirm',
+));
+Route::get('register', array(
+	'as' => 'user.register',
+	'uses' => 'UserController@register',
+));
+Route::get('user/profile', array(
+	'as' => 'user.edit',
+	'uses' => 'UserController@edit',
+));
+Route::put('user/update', array(
+	'as' => 'user.update',
+	'uses' => 'UserController@update',
+));
+Route::get('/dashboard', array(
+	'as' => 'user.dashboard',
+	'uses' => 'userController@dashboard',
+));
+Route::resource('user', 'UserController', array('except' => array('update')));
+
+
 Route::post('article/preview', array('as' => 'article.preview', function() {
 	return MarkdownExtra::defaultTransform(Input::get('markdown'));
 }));

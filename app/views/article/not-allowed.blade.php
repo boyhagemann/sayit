@@ -4,13 +4,6 @@
 
 <div class="page-header clearfix">
 	<h1 class="pull-left">{{{ $article['title'] }}}</h1>
-	<div class="col-lg-3 pull-right">
-		@if(Sentry::check())
-		<a href="{{ URL::route('article.edit', $article->slug) }}" class="btn btn-success btn-lg"><i class="glyphicon glyphicon-edit"></i> Edit this article</a>
-		@else
-		<a href="{{ URL::route('article.edit', $article->slug) }}" class="btn btn-success btn-lg"><i class="glyphicon glyphicon-lock"></i> Login to edit</a>
-		@endif
-	</div>
 </div>
 
 @stop
@@ -18,7 +11,13 @@
 @section('content')
 
 <div class="blank-holder">
-	{{ $article['html'] }}
+	<h2>Oops... you are not allowed to view this article</h2>
+	<p>
+		It seems you are not allowed to read the full contents of this article.
+		If you want, you can send a request message to the channel moderator to
+		allow access to this article.
+	</p>
+	<a href="" class="btn btn-success btn-lg"><i class="glyphicon glyphicon-envelope"></i> Request access</a>
 </div>
 
 @stop

@@ -147,4 +147,33 @@ class ArticleRepository
 		return Article::query()->whereKey($key)->first();
 	}
 
+	public static function allWithAccess()
+	{
+		$q = ArticleRepository::buildQueryFromInput()
+			->with(array('channel', 'user'));
+
+		Sentry::check()
+			? ''
+			: $q->whereAccess('public');
+
+		return $q->get();
+	}
+
+	/**
+	 * @param Article $article
+	 * @return bool
+	 */
+	public static function isGrantedForUser(Article $article)
+	{
+		if($article->isPublic()) {
+			return true;
+		}
+
+		if(!Sentry::check()) {
+			return false;
+		}
+
+		return false;
+	}
+
 }
