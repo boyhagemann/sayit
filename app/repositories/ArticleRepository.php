@@ -9,6 +9,7 @@ class ArticleRepository
 	{
 		$q = Article::query();
 		$q->take(100);
+		$q->orderBy('created_at', 'DESC');
 
 		foreach(Input::all() as $key => $value) {
 
@@ -81,6 +82,20 @@ class ArticleRepository
 				case 'limit':
 					$q->take($value);
 					break;
+
+				case 'order':
+
+					switch($value) {
+
+						case 'latest':
+							$q->orderBy('created_at', 'DESC');
+							break;
+
+						case 'latest':
+							$q->orderBy('created_at', 'DESC');
+							break;
+
+					}
 
 			}
 		}

@@ -20,7 +20,7 @@ Route::bind('article', function($slug) {
 	: ArticleRepository::findBySlug($slug);
 });
 
-Route::resource('article', 'ArticleController');
+
 Route::resource('channel', 'ChannelController');
 Route::resource('api/article', 'Api\ArticleController');
 
@@ -29,43 +29,80 @@ Route::get('/', array(
 	'as' => 'home',
 	'uses' => 'homeController@index',
 ));
-Route::get('login', array(
-	'as' => 'auth.login',
-	'uses' => 'authController@login',
+
+
+Route::group(array('before' => 'auth'), function()
+{
+	Route::resource('article', 'ArticleController', array('except' => array('show')));
+});
+Route::get('article/{article}', array(
+	'as' => 'article.show',
+	'uses' => 'ArticleController@show',
 ));
-Route::post('login', array(
-	'as' => 'auth.check',
-	'uses' => 'authController@check',
-));
-Route::get('logout', array(
-	'as' => 'auth.logout',
-	'uses' => 'authController@logout',
-));
-Route::get('user/unconfirmed', array(
-	'as' => 'user.unconfirmed',
-	'uses' => 'UserController@unconfirmed',
-));
-Route::get('user/confirm/{email}/{token}', array(
-	'as' => 'user.confirm',
-	'uses' => 'UserController@confirm',
-));
-Route::get('register', array(
-	'as' => 'user.register',
-	'uses' => 'UserController@register',
-));
-Route::get('user/profile', array(
-	'as' => 'user.edit',
-	'uses' => 'UserController@edit',
-));
-Route::put('user/update', array(
-	'as' => 'user.update',
-	'uses' => 'UserController@update',
-));
-Route::get('/dashboard', array(
-	'as' => 'user.dashboard',
-	'uses' => 'userController@dashboard',
-));
-Route::resource('user', 'UserController', array('except' => array('update')));
+
+
+
+Route::group(array('before' => 'guest'), function()
+{
+
+	Route::get('login', array(
+		'as' => 'auth.login',
+		'before' => 'guest',
+		'uses' => 'authController@login',
+	));
+	Route::post('login', array(
+		'as' => 'auth.check',
+		'before' => 'guest',
+		'uses' => 'authController@check',
+	));
+	Route::get('user/unconfirmed', array(
+		'as' => 'user.unconfirmed',
+		'before' => 'guest',
+		'uses' => 'UserController@unconfirmed',
+	));
+	Route::get('user/confirm/{email}/{token}', array(
+		'as' => 'user.confirm',
+		'before' => 'guest',
+		'uses' => 'UserController@confirm',
+	));
+	Route::get('register', array(
+		'as' => 'user.register',
+		'before' => 'guest',
+		'uses' => 'UserController@register',
+	));
+
+});
+
+
+Route::group(array('before' => 'auth'), function()
+{
+
+	Route::get('logout', array(
+		'as' => 'auth.logout',
+		'before' => 'auth',
+		'uses' => 'authController@logout',
+	));
+	Route::get('user/profile', array(
+		'as' => 'user.edit',
+		'before' => 'auth',
+		'uses' => 'UserController@edit',
+	));
+	Route::put('user/update', array(
+		'as' => 'user.update',
+		'before' => 'auth',
+		'uses' => 'UserController@update',
+	));
+	Route::get('/dashboard', array(
+		'as' => 'user.dashboard',
+		'before' => 'auth',
+		'uses' => 'userController@dashboard',
+	));
+
+	Route::resource('user', 'UserController', array('only' => array('store')));
+
+});
+
+
 
 
 Route::post('article/preview', array('as' => 'article.preview', function() {
@@ -106,6 +143,7 @@ function scanForMd($folder)
 
 
 
+/*
 Route::get('apitest/list-article', function() {
 	return View::make('article.index', API::get('http://localhost/sayit/public/api/article?with=user'));
 });
@@ -139,3 +177,4 @@ Route::post('apitest/store-article', function() {
 	return Redirect::to('apitest/view-article/' . $response['article']['slug']);
 
 });
+*/

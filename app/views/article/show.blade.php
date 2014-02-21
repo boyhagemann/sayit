@@ -1,10 +1,16 @@
 @extends('layouts.default')
 
+@section('navbar')
+
+<div class="sb-toggle-right"><i class="glyphicon glyphicon-plus"></i></div>
+
+@stop
+
 @section('top')
 
 <div class="page-header clearfix">
 	<h1 class="pull-left">{{{ $article['title'] }}}</h1>
-	<div class="col-lg-3 pull-right">
+	<div class="btn-group pull-right">
 		@if(Sentry::check())
 		<a href="{{ URL::route('article.edit', $article->slug) }}" class="btn btn-success btn-lg"><i class="glyphicon glyphicon-edit"></i> Edit this article</a>
 		@else
@@ -24,35 +30,40 @@
 @stop
 
 @section('sidebar')
-<div class="media media-user">
-	<h5 class="text-muted">Posted by user:</h5>
-	<h4>{{{ $article['user']['username'] }}}</h4>
-	<a class="pull-left user-image" href="#">
-		<img src="http://placehold.it/65x65" width="65" height="65" alt="{{{ $article['user']['username'] }}}">
-	</a>
-	<div class="media-body">
-	</div>
-	<div class="clearfix">
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sit amet nunc nec sem tincidunt hendrerit. Mauris hendrerit lacinia nunc, eget tempor tortor ullamcorper vel.</p>
-		<p>
-			<a href="#" class="btn btn-primary btn-xs" role="button"><i class="glyphicon glyphicon-user"></i> Follow</a> <a href="#" class="btn btn-default btn-xs" role="button"><i class="glyphicon glyphicon-search"></i> View articles</a>
-		</p>
-	</div>
-</div>
 
-@if($article['channel'])
-<h5 class="text-muted">Posted in channel:</h5>
-<h4>{{{ $article['channel']['title'] }}}</h4>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sit amet nunc nec sem tincidunt hendrerit. Mauris hendrerit lacinia nunc, eget tempor tortor ullamcorper vel.</p>
-<p>
-	<a href="#" class="btn btn-primary btn-xs" role="button"><i class="glyphicon glyphicon-star"></i> Follow</a> <a href="#" class="btn btn-default btn-xs" role="button"><i class="glyphicon glyphicon-search"></i> View channel</a>
-</p>
-@endif
-<h5 class="text-muted">Tagged by:</h5>
-<ul class="list-unstyled">
-	<li><a href="{{ URL::route('article.index') }}?q=%23tag" class="label label-default">tag</a></li>
-	<li><a href="{{ URL::route('article.index') }}?q=%23%22tweede+tag%22" class="label label-default">tweede tag</a></li>
-</ul>
+<div class="container-fluid">
+
+	<div class="media media-user">
+		<h5 class="text-muted">Posted by user:</h5>
+		<h4>{{{ $article['user']['username'] }}}</h4>
+		<a class="pull-left user-image" href="#">
+			<img src="http://placehold.it/65x65" width="65" height="65" alt="{{{ $article['user']['username'] }}}">
+		</a>
+		<div class="media-body">
+		</div>
+		<div class="clearfix">
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sit amet nunc nec sem tincidunt hendrerit. Mauris hendrerit lacinia nunc, eget tempor tortor ullamcorper vel.</p>
+			<p>
+				<a href="#" class="btn btn-primary btn-xs" role="button"><i class="glyphicon glyphicon-user"></i> Follow</a> <a href="#" class="btn btn-default btn-xs" role="button"><i class="glyphicon glyphicon-search"></i> View articles</a>
+			</p>
+		</div>
+	</div>
+
+	@if($article['channel'])
+	<h5 class="text-muted">Posted in channel:</h5>
+	<h4>{{{ $article['channel']['title'] }}}</h4>
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sit amet nunc nec sem tincidunt hendrerit. Mauris hendrerit lacinia nunc, eget tempor tortor ullamcorper vel.</p>
+	<p>
+		<a href="#" class="btn btn-primary btn-xs" role="button"><i class="glyphicon glyphicon-star"></i> Follow</a> <a href="#" class="btn btn-default btn-xs" role="button"><i class="glyphicon glyphicon-search"></i> View channel</a>
+	</p>
+	@endif
+	<h5 class="text-muted">Tagged by:</h5>
+	<ul class="list-unstyled">
+		<li><a href="{{ URL::route('article.index') }}?q=%23tag" class="label label-default">tag</a></li>
+		<li><a href="{{ URL::route('article.index') }}?q=%23%22tweede+tag%22" class="label label-default">tweede tag</a></li>
+	</ul>
+
+</div>
 
 @stop
 

@@ -28,7 +28,9 @@ class AuthController extends BaseController {
 			// Login
 			Sentry::login($user, false);
 
-			return Redirect::route('user.dashboard')->withSuccess('You are now logged in');
+			return Redirect::intended()->withSuccess('You are now logged in');
+
+//			return Redirect::route('user.dashboard')->withSuccess('You are now logged in');
 		}
 		catch (Cartalyst\Sentry\Users\LoginRequiredException $e)
 		{
