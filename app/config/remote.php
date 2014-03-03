@@ -29,12 +29,12 @@ return array(
 	'connections' => array(
 
 		'production' => array(
-			'host'      => '',
-			'username'  => '',
-			'password'  => '',
+			'host'      => 'boyhagemann.no-ip.org',
+			'username'  => 'admin',
+			'password'  => 'intern123',
 			'key'       => '',
 			'keyphrase' => '',
-			'root'      => '/var/www',
+			'root'      => '/volume1/web/sayit/releases/20140228172250',
 		),
 
 	),

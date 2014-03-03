@@ -12,7 +12,9 @@
 		"lucadegasperi/oauth2-server-laravel": "1.x",
 		"teepluss/api": "dev-master",
         "michelf/php-markdown": "1.4.*@dev",
-		"cartalyst/sentry": "2.1.*"
+		"cartalyst/sentry": "2.1.*",
+		"fadion/maneuver": "dev-master",
+		"anahkiasen/rocketeer": "dev-master"
 	},
 	"autoload": {
 		"classmap": [

@@ -113,6 +113,7 @@ return array(
 		'LucaDegasperi\OAuth2Server\OAuth2ServerServiceProvider',
 		'Teepluss\Api\ApiServiceProvider',
 		'Cartalyst\Sentry\SentryServiceProvider',
+		'Rocketeer\RocketeerServiceProvider',
 
 	),
 
@@ -184,6 +185,7 @@ return array(
 		'ResourceServer' => 'LucaDegasperi\OAuth2Server\Facades\ResourceServerFacade',
 		'API' => 'Teepluss\Api\Facades\API',
 		'Sentry' => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
+		'Rocketeer' => 'Rocketeer\Facades\Rocketeer',
 	),
 
 );
