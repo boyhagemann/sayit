@@ -12,10 +12,7 @@
 		"teepluss/api": "dev-master",
         "michelf/php-markdown": "1.4.*@dev",
 		"cartalyst/sentry": "2.1.*",
-		"fadion/maneuver": "dev-master"
-	},
-	"require-dev": {
-		"way/generators": "dev-master",
+		"fadion/maneuver": "dev-master",
 		"anahkiasen/rocketeer": "dev-master"
 	},
 	"autoload": {
