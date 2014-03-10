@@ -133,9 +133,15 @@ Route::get('scan', function() {
 		);
 	}
 
-    $response = API::post('http://localhost/sayit/public/api/article', compact('batch'));
-    
-    dd($response);
+	try {
+		$response = API::post('http://boyhagemann.no-ip.org/sayit/current/public/api/article', compact('batch'));
+		dd($response);
+	}
+	catch(Exception $e) {
+		echo ($e->getResponse()->getBody(true));
+
+	}
+
 });
 
 

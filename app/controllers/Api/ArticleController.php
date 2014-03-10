@@ -29,7 +29,7 @@ class ArticleController extends BaseController {
             foreach(Input::get('batch') as $data) {
                 
                 Input::replace($data);
-                $responses[] = $this->store()->getData();
+				$responses[] = json_decode($this->store()->getContent(), true);
             }
             
             return Response::json(array(
