@@ -27,7 +27,7 @@ Route::resource('api/article', 'Api\ArticleController');
 
 Route::get('/', array(
 	'as' => 'home',
-	'uses' => 'homeController@index',
+	'uses' => 'HomeController@index',
 ));
 
 
@@ -48,12 +48,12 @@ Route::group(array('before' => 'guest'), function()
 	Route::get('login', array(
 		'as' => 'auth.login',
 		'before' => 'guest',
-		'uses' => 'authController@login',
+		'uses' => 'AuthController@login',
 	));
 	Route::post('login', array(
 		'as' => 'auth.check',
 		'before' => 'guest',
-		'uses' => 'authController@check',
+		'uses' => 'AuthController@check',
 	));
 	Route::get('user/unconfirmed', array(
 		'as' => 'user.unconfirmed',
