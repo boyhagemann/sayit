@@ -5,8 +5,8 @@
 
 	// The schema to use to name log files
 	'logs' => function ($rocketeer) {
-		return sprintf('%s-%s-%s.log', $rocketeer->getConnection(), $rocketeer->getStage(), date('Ymd'));
-	},
+			return sprintf('%s-%s-%s.log', $rocketeer->getConnection(), $rocketeer->getStage(), date('Ymd'));
+		},
 
 	// Remote access
 	//
@@ -20,7 +20,15 @@
 	// You can leave all of this empty or remove it entirely if you don't want
 	// to track files with credentials : Rocketeer will prompt you for your credentials
 	// and store them locally
-	'connections' => array(),
+	'connections' => array(
+		'production' => array(
+			'host'      => '{host}',
+			'username'  => '{username}',
+			'password'  => '{password}',
+			'key'       => '{key}',
+			'keyphrase' => '{keyphrase}',
+		),
+	),
 
 	// Contextual options
 	//

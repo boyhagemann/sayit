@@ -52,6 +52,6 @@ return array(
 	|
 	*/
 
-	'storage' => __DIR__.'/../app/storage',
+	'storage' => $env == 'production' ? __DIR__.'/../../../shared/app/storage' :  __DIR__.'/../app/storage',
 
 );
