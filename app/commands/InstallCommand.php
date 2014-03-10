@@ -37,6 +37,8 @@ class InstallCommand extends Command {
 	 */
 	public function fire()
 	{
+		$mustSeed = Schema::hasTable('migrations');
+
 		$this->call('config:publish', array('package' => 'lucadegasperi/oauth2-server-laravel'));
 		$this->call('migrate', array('--package' => 'lucadegasperi/oauth2-server-laravel'));
 
@@ -44,7 +46,10 @@ class InstallCommand extends Command {
 		$this->call('migrate', array('--package' => 'cartalyst/sentry'));
 
 		$this->call('migrate');
-		$this->call('db:seed');
+
+		if($mustSeed) {
+			$this->call('db:seed');
+		}
 	}
 
 	/**
