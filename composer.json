@@ -7,8 +7,6 @@
 		"laravel/framework": "4.1.*",
 		"cviebrock/eloquent-sluggable": "1.0.*",
 		"boyhagemann/form": "dev-master",
-		"rtablada/package-installer": "dev-master",
-		"lucadegasperi/oauth2-server-laravel": "1.x",
 		"teepluss/api": "dev-master",
 		"erusev/parsedown": "dev-master",
 		"cartalyst/sentry": "2.1.*",

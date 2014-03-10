@@ -37,7 +37,7 @@ class InstallCommand extends Command {
 	 */
 	public function fire()
 	{
-		$mustSeed = Schema::hasTable('migrations');
+		$mustSeed = Schema::hasTable('migrations') ? false : true;
 
 		$this->call('config:publish', array('package' => 'lucadegasperi/oauth2-server-laravel'));
 		$this->call('migrate', array('--package' => 'lucadegasperi/oauth2-server-laravel'));
