@@ -1,15 +1,15 @@
 <?php
 
-use Michelf\MarkdownExtra;
+$parsedown = new Parsedown();
 
-Article::creating(function(Article $article) {
+Article::creating(function(Article $article) use ($parsedown) {
 
 	Input::merge(array('user' => 'boy@swis.nl'));
 
 	$user = UserRepository::fromInput();
 
 	$article->user_id 	= $user->id;
-	$article->html 		= Input::get('html') ? Input::get('html') : MarkdownExtra::defaultTransform($article->markdown);
+	$article->html 		= Input::get('html') ? Input::get('html') : $parsedown->parse($article->markdown);
 
 	if(!$article->access) {
 		$article->access = 'public';
@@ -21,8 +21,8 @@ Article::creating(function(Article $article) {
 
 });
 
-Article::updating(function(Article $article) {
+Article::updating(function(Article $article) use ($parsedown) {
 
-	$article->html 		= Input::get('html') ? Input::get('html') : MarkdownExtra::defaultTransform($article->markdown);
+	$article->html 		= Input::get('html') ? Input::get('html') : $parsedown->parse($article->markdown);
 
 });

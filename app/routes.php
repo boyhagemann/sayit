@@ -112,11 +112,19 @@ Route::post('article/preview', array('as' => 'article.preview', function() {
 
 Route::get('scan', function() {
 
-	$files = scanForMd('../');
+	$scanner = new Scanner();
+	$scanner->ignoreFolder('vendor');
+	$files = $scanner->scanForMd('C:\Users\boy\Workspace\bronovo');
 
 	foreach($files as $file) {
+
+		$title = basename($file);
+		$title = str_replace('.md', '', $title);
+		$title = Str::slug($title, ' ');
+		$title = ucfirst($title);
+
 		$batch[] = array(
-			'title' => basename($file),
+			'title' => $title,
 			'markdown' => file_get_contents($file),
 			'key' => md5($file),
             'metadata' => array(
@@ -129,17 +137,6 @@ Route::get('scan', function() {
     
     dd($response);
 });
-
-function scanForMd($folder)
-{
-    $files = File::glob(rtrim($folder, '/') . '/*.md');
-    
-    foreach(File::directories($folder) as $subfolder) {
-        $files = array_merge($files, scanForMd($subfolder));
-    }
-    
-    return $files;
-}
 
 
 
